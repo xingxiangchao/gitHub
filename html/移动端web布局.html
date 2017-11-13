@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>赚钱 </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name='viewport'content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+    <meta name="format-detection" content="telephone=no">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @media screen and (min-width: 360px) {
+            html {
+                font-size: 56px;
+            }
+        }
+
+        @media screen and (min-width: 400px) {
+            html {
+                font-size: 63px;
+            }
+        }
+
+        @media screen and (min-width: 440px) {
+            html {
+                font-size: 69px;
+            }
+        }
+
+        @media screen and (min-width: 480px) {
+            html {
+                font-size: 75px;
+            }
+        }
+
+        @media screen and (min-width: 640px) {
+            html {
+                font-size: 100px;
+            }
+        }
+
+        html {
+            font-size: 15.625vw;
+        }
+
+        .top{
+            height:2.08rem;
+            line-height:2.08rem;
+            font-size:.4rem;
+            color:#939393;
+            text-align:center;
+        }
+        .top span{
+            color:#4ab15f;
+            font-weight:800;
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+    即将扣除<span>15乐币</span>预定入住
+</div>
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    ;(function($){
+        var default_width = 20;
+        var default_dpr = 1;
+        var dpr = window.devicePixelRatio;
+        var width = screen.width;
+        var html_style = '';
+        var body_style = '';
+
+        //dpr倍数
+        var difference = dpr / default_dpr;
+
+        //计算
+        if (difference === 1 || difference === 2 || difference === 3) {
+            var default_min_size = 20 * difference;
+            var default_max_size = 33.75 * difference;
+            var default_coefficient = 0.0625 * difference;
+            html_style = get_font_size(width, default_min_size, default_max_size, default_coefficient);
+        } else {
+            html_style = get_font_size(width, 20, 33.75, 0.0625);
+        }
+
+        //进行dom操作
+        $("html").attr('style', html_style);
+
+        function get_font_size(width, default_min_size, default_max_size, default_coefficient) {
+            var style = '';
+            //屏幕宽度需要在320-540之间进行计算
+            if (width < 320) {
+                style = 'font-size:' + default_min_size + 'px';
+            } else if (width > 540) {
+                style = 'font-size:' + default_max_size + 'px';
+            } else {
+                var difference = width - 320;
+                var fontsize = default_min_size + difference * default_coefficient;
+                style = 'font-size:' + fontsize + 'px';
+            }
+            return style;
+        }
+    })(jQuery);
+</script>
+</body>
+</html>
