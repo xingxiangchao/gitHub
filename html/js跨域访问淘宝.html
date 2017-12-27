@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		.red{
+			color: red;
+		}
+		.blue{
+			color: blue;
+		}
+	</style>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+	<div>
+		<input type="text" placeholder="输入：卫衣或棉袄" class="searchCon">
+		<input type="button" value="搜索" class="search">
+	</div>
+	<div class="result">
+		<!-- 类型：<span class="red"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编号：<span class="blue"></span> -->
+	</div>
+	<script>
+		$(function(){
+			$(".search").on("click",function(){
+				var searchCon = $(".searchCon").val();
+				$.ajax({
+				 	type:"get",
+				 	url:"https://suggest.taobao.com/sug?code=utf-8&q="+searchCon+"&callback=cb",/*url写异域的请求地址*/
+				 	dataType:"jsonp",/*加上datatype*/
+				 	jsonpCallback:"cb",/*设置一个回调函数，名字随便取，和下面的函数里的名字相同就行*/
+				 	success:function(data){
+				 		console.log(data.result[0][0]);
+				 		var htmls = '';
+				 		for (var i =0; i < data.result.length; i++) {
+				 			htmls+='类型：<span class="red">'+data.result[i][0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编号：<span class="blue">'+data.result[i][1]+'</span><br/>';
+				 		}
+				 		$(".result").html(htmls);
+				 	},
+				 	error:function(er){  
+						console.log(er);
+					}  
+				});
+			})
+			
+		})
+	</script>
+</body>
+</html>

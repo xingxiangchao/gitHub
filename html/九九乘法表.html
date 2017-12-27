@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>九九乘法表</title>
+	<style type="text/css">  
+		table{  
+		    width:600px;  
+		    border-collapse:collapse;  
+		}  
+		table td{  
+		    padding: 5px 8px;
+		    font-family: 'Microsoft YaHei', 'Times New Roman', Times, serif;
+    		font-size: 14px;
+    		border:#CCc 1px solid;
+		}  
+	</style>  
+	<script>
+		/********************************************** 方式1 ***********************************************/
+		let table = new Array(10);
+		console.log(table);
+		for(let i = 0 ; i < table.length; i++){
+			table[i] = new Array(10);
+			console.log(table[i]);
+			for(let  j=0; j<table.length; j++ ){
+				table[i][j] = i*j;
+				console.log(table[i][j]);
+			}
+		}
+		// console.log(table);
+	</script>
+	
+
+</head>
+<body>
+	<script>	
+		document.write('<table>');
+		for(let x = 1; x < 9; x++){
+			document.write('<tr>');
+			for(let y = 1; y <= x; y++){
+				document.write('<td>'+y+'*'+x+'='+ y*x +'</td>');
+			}
+			document.write('</tr>'); 
+		}
+		document.write('</table>');
+	</script>
+</body>
+</html>

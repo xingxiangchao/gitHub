@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左右切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: 14px 'Microsoft YaHei', 'Times New Roman', Times, serif;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .content {
+            width: 600px;
+            margin: 0 auto;
+            padding: 30px 50px;
+        }
+
+        .left-con,
+        .right-con {
+            width: 30%;
+            float: left;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .left-con p,
+        .right-con p {
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .left-con ul,
+        .right-con ul {
+            height: 260px;
+        }
+
+        .left-con ul li,
+        .right-con ul li {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .left-con ul li:hover,
+        .right-con ul li:hover {
+            background: #f5f5f5;
+        }
+
+        .icon-con {
+            width: 20%;
+            margin: 120px auto;
+            float: left;
+        }
+
+        .icon-con p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-con p  button{
+            padding: 6px 8px;
+            background: #ddd;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="content clearfix">
+    <div class="left-con">
+        <p>已分配</p>
+        <ul id="leftUlCon">
+            <li>数学</li>
+            <li>语文</li>
+            <li>英语</li>
+            <li>化学</li>
+            <li>物理</li>
+            <li>政治</li>
+            <li>历史</li>
+            <li>地理</li>
+        </ul>
+    </div>
+    <div class="icon-con">
+        <p><button id="leftAllBtn">>></button></p>
+        <p><button id="rightAllBtn"><<</button></p>
+    </div>
+    <div class="right-con">
+        <p>未分配</p>
+        <ul id="rightUlCon"></ul>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    $(function () {
+        //已分配角色
+        $('#leftUlCon').on('dblclick', 'li', function () {
+            $('#rightUlCon').prepend($(this));
+        });
+        //可分配角色
+        $('#rightUlCon').on('dblclick', 'li', function () {
+            $('#leftUlCon').prepend($(this));
+        });
+        //可分配角色全选
+        $('#rightAllBtn').click(() => {
+            $('#leftUlCon').prepend($('#rightUlCon li'));
+        });
+        //已分配角色全选
+        $('#leftAllBtn').click(() => {
+            $('#rightUlCon').prepend($('#leftUlCon li'));
+        });
+    });
+</script>
+</body>
+</html>
