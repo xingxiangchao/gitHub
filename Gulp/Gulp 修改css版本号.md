@@ -22,11 +22,11 @@
     更新为: return modifyFilename(pth, (filename, ext) => `${filename}${ext}`);
     ```
  4. 打开node_modules\gulp-rev-collector\index.js
-      ```
-        第40行 var cleanReplacement = path.basename(json[key]).replace(new RegExp( opts.revSuffix ), ''）
-        更新为 var cleanReplacement =  path.basename(json[key]).split('?')[0];
-      ```
+    ```
+    第40行 var cleanReplacement = path.basename(json[key]).replace(new RegExp( opts.revSuffix ), ''）
+    更新为 var cleanReplacement =  path.basename(json[key]).split('?')[0];
+    ```
  5. 结果达到预期，如下(Html)：
-     ```
-     href="css/main.css?v=885e0e1815"
-     ```
+    ```
+    href="css/main.css?v=885e0e1815"
+    ```
