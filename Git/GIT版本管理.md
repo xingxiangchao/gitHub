@@ -43,7 +43,7 @@
 
     创建远程分支(本地分支push到远程)：$ git push origin [name]
 
-    删除远程分支：$ git push origin :heads/[name] 或 $ gitpush origin :[name]
+    删除远程分支：$ git push origin :heads/[name] 或 $ git push origin :[name]
 
     *创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)
 
