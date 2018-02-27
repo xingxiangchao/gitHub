@@ -1,0 +1,6 @@
+*.a
+!lib.a
+.idea/
+*.idea/*/
+*.DS_Store
+node_modules/
