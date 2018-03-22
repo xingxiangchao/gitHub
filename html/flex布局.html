@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex布局</title>
+    <style>
+        ul li{
+            list-style: none;
+        }
+        /*.等分*/
+        .list{
+            background: yellow;
+            display: flex;
+        }
+        .item{
+            flex:1;
+        }
+        /*2.左定宽*/
+        li:nth-child(1) {
+            flex: 0 0 120px;
+            width: 120px;
+        }
+        /*上下左右居中布局*/
+        .demo{
+            width: 600px;
+            height: 600px;
+            border:1px solid #ccc;
+            display: flex;
+            margin: 0 auto;
+        }
+        .box{
+            width: 60px;
+            height: 60px;
+            background-color: #f00;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li class="item">12345</li>
+        <li class="item">54321</li>
+        <li class="item">67123</li>
+    </ul>
+    <!--demo2-->
+    <div class="demo">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
